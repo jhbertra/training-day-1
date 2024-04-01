@@ -1,0 +1,5 @@
+{
+    "type": "ConstitutionalCommitteeColdSigningKey_ed25519",
+    "description": "Constitutional Committee Cold Signing Key",
+    "cborHex": "582060c77e67120b75e3d0357ae8afbed8ae37c17bede5daff1f3ac778f856a4577d"
+}
