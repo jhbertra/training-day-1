@@ -72,27 +72,35 @@ property (namely, `govActionIx` and `txId`).
 
 ### 3. Prepare the rationale for your vote.
 
-After deciding how you want to vote, make a copy of `metadata-template.json` on the laptop on which you installed IPFS.
-Ignoring everything under `"@context"`, write up your rationale inside the empty double quotes for `comment` field
+After deciding how you want to vote, make a copy of `metadata-template.json` in one of two ways:
+
+1. Create a new JSON file on your laptop and copy in the contents of `metadata-template.json`
+2. Open https://jsoneditoronline.org/ and paste the contents of `metadata-template.json` into the left panel.
+
+Ignoring everything inside `"@context"`, write up your rationale inside the empty double quotes for the `comment` field
 under `body`. Note that you cannot add newlines to the text here.
 
-Save the file, and add it to IPFS via the IPFS Desktop user interface. Make note of the content ID (CID) of the file after it has been added.
+Save the file:
 
-Copy the full contents of the file into https://json-ld.org/playground/ where it says "Enter your JSON-LD markup here...".
+1. If you created the file locally and are editing with a text editor, just save it.
+2. If you used the only JSON editor, click "save" > "save to disk" and save it somewhere you can find it later (e.g. your desktop).
 
-Open the "Canonized" tab in the output panel below and copy what it says into a new file in the "user-<your-user-number>-files" folder for
-your user number in the Demeter workspace. Call it `rationale.nq`
+Add the file to IPFS either by:
+
+1. By dragging it into the IPFS Desktop user interface.
+2. using the ipfs CLI command `ipfs add <filename>`
+
+Make note of the content ID (CID) of the file after it has been added.
 
 Run the `vote.sh` script as follows:
 
 ```bash
-vote.sh <txId from step 2> <govActionIx from step 2> ipfs://<cid from step 3> user-<your-user-number>-files/rationale.nq <yes, no, or abstain>
+vote.sh <txId from step 2> <govActionIx from step 2> <cid from step 3> <yes, no, or abstain>
 ```
 
 For example, if the `txId` from step 2 is `270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3`, the `govActionIx` from
-step 2 is `0`, the CID from step 3 is `QmbaU4oz7rDgfukZWPgGNN772sEW41XLobF9bg7LcAuQEC`, and your user number is `4`, and you want to vote
-`yes`, the command you would run is:
+step 2 is `0`, the CID from step 3 is `QmbaU4oz7rDgfukZWPgGNN772sEW41XLobF9bg7LcAuQEC`, and you want to vote `yes`, the command you would run is:
 
 ```bash
-vote.sh 270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3 0 ipfs://QmbaU4oz7rDgfukZWPgGNN772sEW41XLobF9bg7LcAuQEC user-4-files/rationale.nq yes
+vote.sh 270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3 0 QmbaU4oz7rDgfukZWPgGNN772sEW41XLobF9bg7LcAuQEC yes
 ```
