@@ -9,7 +9,7 @@ shopt -s dotglob
 
 source ./check-env.sh
 
-USAGE="usage: ./vote.sh <action-tx-id> <action-ix> <anchor-ipfs-cid> <canonized-file> (yes|no|abstain)"
+USAGE="usage: ./vote.sh <action-tx-id> <action-ix> <anchor-ipfs-cid> (yes|no|abstain)"
 
 # Read the tx ID of the governance action from argument 1
 ACTION_TX_ID="${1:-}"
@@ -20,15 +20,11 @@ ACTION_IX="${2:-}"
 [ -z "$ACTION_IX" ] && echo "$USAGE" && exit 1
 
 # Read the anchor URL from argument 3
-ANCHOR_URL="${3:-}"
-[ -z "$ANCHOR_URL" ] && echo "$USAGE" && exit 1
+ANCHOR_CID="${3:-}"
+[ -z "$ANCHOR_CID" ] && echo "$USAGE" && exit 1
 
-# Read the anchor hash from argument 4
-ANCHOR_FILE="${4:-}"
-[ -z "$ANCHOR_FILE" ] && echo "$USAGE" && exit 1
-
-# Read the choice from argument 5
-CHOICE="${5:-}"
+# Read the choice from argument 4
+CHOICE="${4:-}"
 [ -z "$CHOICE" ] && echo "$USAGE" && exit 1
 
 VOTE_FILE="$(mktemp -t vote.XXXXXX)"
@@ -36,7 +32,9 @@ VOTE_FILE="$(mktemp -t vote.XXXXXX)"
 echo "Generating vote file: $VOTE_FILE"
 
 # Hash the anchor file
-ANCHOR_HASH=$(cardano-cli conway governance hash anchor-data --file-text "$ANCHOR_FILE" --out-file /dev/stdout)
+ANCHOR_HTTPS_URL="https://cloudflare-ipfs.com/ipfs/$ANCHOR_CID"
+ANCHOR_URL="ipfs://$ANCHOR_CID"
+ANCHOR_HASH=$(cardano-cli conway governance hash anchor-data --text "$(./jsonld.sh canonize "$ANCHOR_HTTPS_URL")")
 
 # Generates a vote file.
 cardano-cli conway governance vote create \

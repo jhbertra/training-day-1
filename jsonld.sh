@@ -1,0 +1,1 @@
+result/bin/node node_modules/jsonld-cli/bin/jsonld.js "$@"
