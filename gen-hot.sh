@@ -1,0 +1,19 @@
+set -o errexit
+set -o pipefail
+set -o nounset
+set -o functrace
+set -o errtrace
+set -o monitor
+set -o posix
+shopt -s dotglob
+
+source ./check-env.sh
+
+echo "Generating CC Member hot key files:"
+echo "- $HOT_VKEY"
+echo "- $HOT_SKEY"
+
+# Generates a new key pair for our CC hot credentials.
+cardano-cli conway governance committee key-gen-hot \
+  --verification-key-file "$HOT_VKEY" \
+  --signing-key-file "$HOT_SKEY"
