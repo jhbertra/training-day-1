@@ -34,7 +34,8 @@ echo "Generating vote file: $VOTE_FILE"
 # Hash the anchor file
 ANCHOR_HTTPS_URL="https://cloudflare-ipfs.com/ipfs/$ANCHOR_CID"
 ANCHOR_URL="ipfs://$ANCHOR_CID"
-ANCHOR_HASH=$(cardano-cli conway governance hash anchor-data --text "$(./jsonld.sh canonize "$ANCHOR_HTTPS_URL")")
+ANCHOR_CANONICAL_TEXT="$(./jsonld.sh canonize "$ANCHOR_HTTPS_URL")"
+ANCHOR_HASH=$(cardano-cli conway governance hash anchor-data --text "$ANCHOR_CANONICAL_TEXT")
 
 # Generates a vote file.
 cardano-cli conway governance vote create \

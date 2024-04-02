@@ -1,1 +1,1 @@
-result/bin/node node_modules/jsonld-cli/bin/jsonld.js "$@"
+nix run github:NixOS/nixpkgs#nodejs -- node_modules/jsonld-cli/bin/jsonld.js "$@"
