@@ -2,26 +2,7 @@
 
 ## Setup
 
-### 1. Add the project directory to your PATH
-
-The first thing to do, as a small ease-of-use improvement, is to run the following command:
-
-```bash
-PATH="$PATH:$(pwd)"
-```
-
-If you don't do this, you will have to add `./` in front of the filenames of the scripts when
-running them. For example, to run the `list-proposals` script:
-
-```bash
-# Without running PATH="$PATH:$(pwd)"
-./list-proposals.sh
-
-# After running PATH="$PATH:$(pwd)"
-list-proposals.sh
-```
-
-### 2. Setup your environment for working with your user number
+### 1. Setup your environment for working with your user number
 
 At the beginning of the session, you will be issued a user number from 1 to 25. Run the following command:
 
@@ -47,9 +28,9 @@ Generates a new hot-key pair for your user number. **Overwrites existing key fil
 
 Authorizes the generated hot-key for your user number to sign off on votes. Requires `gen-hot.sh` to have been run.
 
-### `list-proposals.sh`
+### `update-proposals.sh`
 
-Shows all active governance actions which can be voted on.
+Fetches current active governance actions and writes them to `proposals.json`.
 
 ### `show-committee.sh`
 
@@ -81,8 +62,9 @@ All governance actions are identified by:
 1. The ID of the transaction in which they were proposed.
 2. The index of the action within that transaction, starting from 0.
 
-If you run `list-proposals.sh` you will see a list of all governance actions. Find theaction you want to vote for
-and take note of the fields in the `actionId` property (namely, `govActionIx` and `txId`).
+Run `update-proposals.sh` to update the list of active governance actions in `proposals.json`.
+Open this file, find the action you want to vote for and take note of the fields in the `actionId`
+property (namely, `govActionIx` and `txId`).
 
 ### 3. Prepare the rationale for your vote.
 

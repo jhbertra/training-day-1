@@ -7,4 +7,5 @@ set -o monitor
 set -o posix
 shopt -s dotglob
 
-cardano-cli conway query gov-state | jq '.proposals.[]'
+cardano-cli conway query gov-state | jq -r '.proposals' > proposals.json
+echo "Updated proposals.json"

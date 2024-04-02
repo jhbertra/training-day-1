@@ -1,0 +1,25 @@
+[
+  {
+    "action": {
+      "tag": "InfoAction"
+    },
+    "actionId": {
+      "govActionIx": 0,
+      "txId": "9664bf7b413b84b89f3776fc959514aa87fe64b917971d1a87b953ecb98d7ec5"
+    },
+    "committeeVotes": {
+      "keyHash-165c93eda7dd0d2e7d00fefa318117b73046e0e5a5307e3e37433317": "VoteYes"
+    },
+    "dRepVotes": {},
+    "deposit": 1000000000,
+    "expiresAfter": 1894,
+    "proposedIn": 1884,
+    "returnAddr": {
+      "credential": {
+        "keyHash": "ed7a78f87bcf8640f6785ba8616101114ba4ea6d3c1b5cebfe180d69"
+      },
+      "network": "Testnet"
+    },
+    "stakePoolVotes": {}
+  }
+]
