@@ -9,7 +9,7 @@ shopt -s dotglob
 
 source ./check-env.sh
 
-USAGE="usage: ./vote.sh <action-tx-id> <action-ix> <anchor-url> <anchor-file> (yes|no|abstain)"
+USAGE="usage: ./vote.sh <action-tx-id> <action-ix> <anchor-ipfs-cid> <canonized-file> (yes|no|abstain)"
 
 # Read the tx ID of the governance action from argument 1
 ACTION_TX_ID="${1:-}"

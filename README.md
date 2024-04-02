@@ -28,13 +28,17 @@ Generates a new hot-key pair for your user number. **Overwrites existing key fil
 
 Authorizes the generated hot-key for your user number to sign off on votes. Requires `gen-hot.sh` to have been run.
 
-### `update-proposals.sh`
+### `update-gov-actions.sh`
 
-Fetches current active governance actions and writes them to `proposals.json`.
+Fetches current active governance actions and writes them to `gov-actions.json`.
 
 ### `show-committee.sh`
 
 Shows the state of all active constitutional committee members.
+
+### `show-env.sh`
+
+Shows the environment variables related to your user number.
 
 ### `show-membership.sh`
 
@@ -62,14 +66,14 @@ All governance actions are identified by:
 1. The ID of the transaction in which they were proposed.
 2. The index of the action within that transaction, starting from 0.
 
-Run `update-proposals.sh` to update the list of active governance actions in `proposals.json`.
+Run `update-gov-actions.sh` to update the list of active governance actions in `gov-actions.json`.
 Open this file, find the action you want to vote for and take note of the fields in the `actionId`
 property (namely, `govActionIx` and `txId`).
 
 ### 3. Prepare the rationale for your vote.
 
 After deciding how you want to vote, make a copy of `metadata-template.json` on the laptop on which you installed IPFS.
-Ignoring everything under `"@context"`, write up your rationale inside the empty double quotes for `title`, `abstract`, `motivation`, and `rationale` fields
+Ignoring everything under `"@context"`, write up your rationale inside the empty double quotes for `comment` field
 under `body`. Note that you cannot add newlines to the text here.
 
 Save the file, and add it to IPFS via the IPFS Desktop user interface. Make note of the content ID (CID) of the file after it has been added.

@@ -13,7 +13,7 @@ CERT_FILE="$(mktemp -t authorize-host.XXXXXX.cert)"
 
 echo "Generating CC member hot key authorization certificate: $CERT_FILE"
 
-# Generates an authorization certificat file for the hot key.
+# Generates an authorization certificate file for the hot key.
 cardano-cli conway governance committee create-hot-key-authorization-certificate \
   --cold-verification-key-file "$COLD_VKEY" \
   --hot-key-file "$HOT_VKEY" \
