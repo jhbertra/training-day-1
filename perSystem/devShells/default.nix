@@ -29,11 +29,13 @@ flake: {
           CARDANO_NODE_NETWORK_ID = "5";
           USE_ENCRYPTION = false;
           UNSTABLE = true;
+          IPFS_PATH = "./cc-public/ipfs";
         };
         extraPkgs = [
           config.packages.run-cardano-node
           pkgs.asciinema
           pkgs.fx
+          pkgs.ipfs
           jsonld
           votingScripts
         ];

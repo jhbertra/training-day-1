@@ -25,3 +25,18 @@ stop-node:
     kill $(< cc-public/cardano.pid)
     rm cc-public/cardano.pid
   fi
+
+start-ipfs:
+  #!/usr/bin/env bash
+  if [ ! -d cc-public/ipfs ]; then
+    ipfs init
+  fi
+  nohup ipfs daemon &
+  echo $! > cc-public/ipfs.pid
+
+stop-ipfs:
+  #!/usr/bin/env bash
+  ipfs shutdown
+
+push-ipfs file:
+  ipfs add {{file}}
