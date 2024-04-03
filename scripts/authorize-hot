@@ -7,7 +7,7 @@ set -o monitor
 set -o posix
 shopt -s dotglob
 
-source ./check-env
+source check-env
 
 CERT_FILE="$(mktemp -t authorize-host.XXXXXX.cert)"
 

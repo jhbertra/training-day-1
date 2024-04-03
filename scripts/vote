@@ -7,9 +7,9 @@ set -o monitor
 set -o posix
 shopt -s dotglob
 
-source ./check-env
+source check-env
 
-USAGE="usage: ./vote <action-tx-id> <action-ix> <anchor-ipfs-cid> (yes|no|abstain)"
+USAGE="usage: vote <action-tx-id> <action-ix> <anchor-ipfs-cid> (yes|no|abstain)"
 
 # Read the tx ID of the governance action from argument 1
 ACTION_TX_ID="${1:-}"

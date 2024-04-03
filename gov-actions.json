@@ -5,20 +5,15 @@
     },
     "actionId": {
       "govActionIx": 0,
-      "txId": "9664bf7b413b84b89f3776fc959514aa87fe64b917971d1a87b953ecb98d7ec5"
+      "txId": "15501a385993d2560a4af28b5478a95205e955002d5228f4c2a9747f95636cfd"
     },
     "committeeVotes": {
-      "keyHash-153bf1c7881fd0d03bc978e223adbeda1ec0ff79fb01d7d690ba663b": "Abstain",
-      "keyHash-165c93eda7dd0d2e7d00fefa318117b73046e0e5a5307e3e37433317": "VoteYes",
-      "keyHash-3d918bfae45e2404cd939b9132490046871371ae8ed7a1edd26c4319": "VoteNo",
-      "keyHash-7e9234f076584315d20c87dd2899e91b8f030b1ca8d38314e40c66b8": "VoteYes",
-      "keyHash-e279769d98de93ea29a1b8d5e20852fb06c63f329d793d5e918400ee": "VoteNo",
-      "keyHash-e41bc0e069a6112bd1c87e7d0fa7fce2cd962e367f1cb44875e107b6": "VoteYes"
+      "keyHash-12142b9f16486f2e031ee06dd460e2847d30e1778879e39b52db65e5": "VoteYes"
     },
     "dRepVotes": {},
     "deposit": 1000000000,
-    "expiresAfter": 1894,
-    "proposedIn": 1884,
+    "expiresAfter": 1912,
+    "proposedIn": 1902,
     "returnAddr": {
       "credential": {
         "keyHash": "ed7a78f87bcf8640f6785ba8616101114ba4ea6d3c1b5cebfe180d69"

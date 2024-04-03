@@ -1,0 +1,2 @@
+STORE_PATH="$(nix build .#jsonld --print-out-paths --no-link --quiet 2> /dev/null)"
+"$STORE_PATH/bin/jsonld" "$@"

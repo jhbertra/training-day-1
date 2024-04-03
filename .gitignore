@@ -7,8 +7,6 @@ node_modules/
 /cc-public
 workbench
 result*
-*.skey
-*.vkey
 *.cert
 *.txbody
 *.txsigned
