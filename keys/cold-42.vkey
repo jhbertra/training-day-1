@@ -1,0 +1,5 @@
+{
+    "type": "ConstitutionalCommitteeColdVerificationKey_ed25519",
+    "description": "Constitutional Committee Cold Verification Key",
+    "cborHex": "582035329da4657f60076ef8d41278f579c65bbda36d3f7d5a18687281b96ec8c005"
+}
