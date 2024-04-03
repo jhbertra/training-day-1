@@ -7,7 +7,7 @@ set -o monitor
 set -o posix
 shopt -s dotglob
 
-source ./check-env.sh
+source ./check-env
 
 echo "Generating CC Member hot key files:"
 echo "- $HOT_VKEY"

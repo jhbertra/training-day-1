@@ -7,9 +7,9 @@ set -o monitor
 set -o posix
 shopt -s dotglob
 
-source ./check-env.sh
+source ./check-env
 
-USAGE="usage: ./vote.sh <action-tx-id> <action-ix> <anchor-ipfs-cid> (yes|no|abstain)"
+USAGE="usage: ./vote <action-tx-id> <action-ix> <anchor-ipfs-cid> (yes|no|abstain)"
 
 # Read the tx ID of the governance action from argument 1
 ACTION_TX_ID="${1:-}"
@@ -34,7 +34,7 @@ echo "Generating vote file: $VOTE_FILE"
 # Hash the anchor file
 ANCHOR_HTTPS_URL="https://cloudflare-ipfs.com/ipfs/$ANCHOR_CID"
 ANCHOR_URL="ipfs://$ANCHOR_CID"
-ANCHOR_CANONICAL_TEXT="$(./jsonld.sh canonize "$ANCHOR_HTTPS_URL")"
+ANCHOR_CANONICAL_TEXT="$(jsonld canonize "$ANCHOR_HTTPS_URL")"
 ANCHOR_HASH=$(cardano-cli conway governance hash anchor-data --text "$ANCHOR_CANONICAL_TEXT")
 
 # Generates a vote file.
