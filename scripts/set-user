@@ -1,5 +1,5 @@
 # Read the user number from argument 1
-[ -z "${1:-}" ] && echo "usage: source ./set-user.sh <user>" && return
+[ -z "${1:-}" ] && echo "usage: source ./set-user <user>" && return
 
 # Ensure necessary files exist
 [ ! -f "keys/payment-${1:-}.vkey" ] && echo "Invalid user number" && return

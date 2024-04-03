@@ -7,6 +7,6 @@ set -o monitor
 set -o posix
 shopt -s dotglob
 
-source ./check-env.sh
+source ./check-env
 
 cardano-cli conway query utxo --address "$PAYMENT_ADDRESS"
