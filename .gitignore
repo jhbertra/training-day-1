@@ -21,3 +21,4 @@ state-*
 *.cbor
 *.json
 *.mnemonic
+gov-actions.jsoon
