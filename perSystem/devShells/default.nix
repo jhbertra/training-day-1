@@ -9,7 +9,6 @@ flake: {
     votingScripts = pkgs.runCommandNoCC "voting-scripts" {} ''
       mkdir -p $out/bin
       cp ${../../scripts}/* $out/bin
-      substituteInPlace $out/bin/* --replace "source ./check-env" "source $out/bin/check-env"
     '';
   in {
     cardano-parts.shell = {
