@@ -1,0 +1,20 @@
+# Read the user number from argument 1
+[ -z "${1:-}" ] && echo "usage: source set-user <user>" && return
+
+# Ensure necessary files exist
+[ ! -f "keys/payment-${1:-}.vkey" ] && echo "Invalid user number" && return
+
+export USER_NO="${1:-}"
+export PAYMENT_VKEY="keys/payment-$USER_NO.vkey"
+export PAYMENT_SKEY="keys/payment-$USER_NO.skey"
+export PAYMENT_ADDRESS_FILE="keys/payment-$USER_NO.addr"
+export STAKE_VKEY="keys/stake-$USER_NO.vkey"
+export STAKE_SKEY="keys/stake-$USER_NO.skey"
+export STAKE_ADDRESS_FILE="keys/stake-$USER_NO.addr"
+export COLD_VKEY="keys/cold-$USER_NO.vkey"
+export COLD_SKEY="keys/cold-$USER_NO.skey"
+export HOT_VKEY="keys/hot-$USER_NO.vkey"
+export HOT_SKEY="keys/hot-$USER_NO.skey"
+export PAYMENT_ADDRESS="$(cat "$PAYMENT_ADDRESS_FILE")"
+export STAKE_ADDRESS="$(cat "$STAKE_ADDRESS_FILE")"
+export PATH="$(pwd)/scripts:$PATH"
