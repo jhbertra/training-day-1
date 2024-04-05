@@ -9,6 +9,7 @@ flake: {
     votingScripts = pkgs.runCommandNoCC "voting-scripts" {} ''
       mkdir -p $out/bin
       cp ${../../scripts}/* $out/bin
+      substituteInPlace $out/bin/* --replace "cardano-cli" "cardano-cli-ng"
     '';
   in {
     cardano-parts.shell = {

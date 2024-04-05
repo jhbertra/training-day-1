@@ -10,3 +10,4 @@ shopt -s dotglob
 source check-env
 
 cardano-cli conway query committee-state --cold-verification-key-file "$COLD_VKEY"
+

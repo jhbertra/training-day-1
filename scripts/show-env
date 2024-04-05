@@ -22,3 +22,4 @@ echo "HOT_VKEY=$HOT_VKEY"
 echo "HOT_SKEY=$HOT_SKEY"
 echo "PAYMENT_ADDRESS=$PAYMENT_ADDRESS"
 echo "STAKE_ADDRESS=$STAKE_ADDRESS"
+cardano-cli --version
