@@ -1,0 +1,17 @@
+set -o errexit
+set -o pipefail
+set -o nounset
+set -o functrace
+set -o errtrace
+set -o monitor
+set -o posix
+shopt -s dotglob
+
+source check-env
+
+RATIONALE_FILE=rationale-$USER_NO.json
+
+echo "Copying template to new rationale file"
+echo "- $RATIONALE_FILE"
+
+cp metadata-template.json $RATIONALE_FILE

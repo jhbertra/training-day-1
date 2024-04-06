@@ -22,3 +22,4 @@ state-*
 *.json
 *.mnemonic
 gov-actions.jsoon
+.local

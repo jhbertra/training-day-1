@@ -9,7 +9,7 @@ shopt -s dotglob
 
 source check-env
 
-USAGE="usage: vote <action-tx-id> <action-ix> <anchor-ipfs-cid> (yes|no|abstain)"
+USAGE="usage: vote <action-tx-id> <action-ix> (yes|no|abstain)"
 
 # Read the tx ID of the governance action from argument 1
 ACTION_TX_ID="${1:-}"
@@ -19,22 +19,28 @@ ACTION_TX_ID="${1:-}"
 ACTION_IX="${2:-}"
 [ -z "$ACTION_IX" ] && echo "$USAGE" && exit 1
 
-# Read the anchor URL from argument 3
-ANCHOR_CID="${3:-}"
-[ -z "$ANCHOR_CID" ] && echo "$USAGE" && exit 1
-
-# Read the choice from argument 4
-CHOICE="${4:-}"
+# Read the choice from argument 3
+CHOICE="${3:-}"
 [ -z "$CHOICE" ] && echo "$USAGE" && exit 1
+
+RATIONALE_FILE=rationale-$USER_NO.json
+
+[ ! -f "$RATIONALE_FILE" ] && echo "No rationale file found" && exit 1
+
+echo "Uploading rationale file to IPFS"
+echo "- $RATIONALE_FILE"
+
+ANCHOR_CID=$(curl "https://ipfs.blockfrost.io/api/v0/ipfs/add" -X POST -H "project_id: $PROJECT_ID"  -F "file=@$RATIONALE_FILE" | jq -r '.ipfs_hash')
+
+echo "Rationale File CID: $ANCHOR_CID"
 
 VOTE_FILE="$(mktemp -t vote.XXXXXX)"
 
 echo "Generating vote file: $VOTE_FILE"
 
 # Hash the anchor file
-ANCHOR_HTTPS_URL="https://cloudflare-ipfs.com/ipfs/$ANCHOR_CID"
 ANCHOR_URL="ipfs://$ANCHOR_CID"
-ANCHOR_CANONICAL_TEXT="$(jsonld canonize "$ANCHOR_HTTPS_URL")"
+ANCHOR_CANONICAL_TEXT="$(jsonld canonize "$RATIONALE_FILE")"
 ANCHOR_HASH=$(cardano-cli conway governance hash anchor-data --text "$ANCHOR_CANONICAL_TEXT")
 
 # Generates a vote file.

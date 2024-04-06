@@ -52,12 +52,18 @@ Shows the utxo (balance) in your user number's payment address.
 
 Casts a vote for a governance action. See [How to vote](#how-to-vote)
 
+### `write-rationale`
+
+Copies the rationale template file to a file specific to your user.
+
 ## How to vote
 
 ### 1. Run all necessary prerequisites
 
-You must run `gen-hot` and `authorize-hot` before you can vote. Note there will be a delay after running `authorize-hot`
-before you can vote. You can check by running `show-membership`. If the output says `MemberAuthorized`, you can vote.
+You must run `gen-hot` and `authorize-hot` before you can vote. Note there will be a delay after running
+`authorize-hot`
+before you can vote. You can check by running `show-membership`. If the output says `MemberAuthorized`, you
+can vote.
 
 ### 2. Find out the Tx ID and Action Index of the governance action you want to vote for.
 
@@ -72,35 +78,19 @@ property (namely, `govActionIx` and `txId`).
 
 ### 3. Prepare the rationale for your vote.
 
-After deciding how you want to vote, make a copy of `metadata-template.json` in one of two ways:
-
-1. Create a new JSON file on your laptop and copy in the contents of `metadata-template.json`
-2. Open https://jsoneditoronline.org/ and paste the contents of `metadata-template.json` into the left panel.
-
-Ignoring everything inside `"@context"`, write up your rationale inside the empty double quotes for the `comment` field
-under `body`. Note that you cannot add newlines to the text here.
-
-Save the file:
-
-1. If you created the file locally and are editing with a text editor, just save it.
-2. If you used the only JSON editor, click "save" > "save to disk" and save it somewhere you can find it later (e.g. your desktop).
-
-Add the file to IPFS either by:
-
-1. By dragging it into the IPFS Desktop user interface.
-2. using the ipfs CLI command `ipfs add <filename>`
-
-Make note of the content ID (CID) of the file after it has been added.
+After deciding how you want to vote, run `write-rationale` to make a copy of `metadata-template.json`.
+Open the file. Ignoring everything inside `"@context"`, write up your rationale inside the empty double quotes for
+the `comment` field under `body`. Note that you cannot add newlines to the text here. Save the file.
 
 Run the `vote` script as follows:
 
 ```bash
-vote <txId from step 2> <govActionIx from step 2> <cid from step 3> <yes, no, or abstain>
+vote <txId from step 2> <govActionIx from step 2> <yes, no, or abstain>
 ```
 
-For example, if the `txId` from step 2 is `270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3`, the `govActionIx` from
-step 2 is `0`, the CID from step 3 is `QmbaU4oz7rDgfukZWPgGNN772sEW41XLobF9bg7LcAuQEC`, and you want to vote `yes`, the command you would run is:
+For example, if the `txId` from step 2 is `270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3`, the
+`govActionIx` from step 2 is `0`, and you want to vote `yes`, the command you would run is:
 
 ```bash
-vote 270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3 0 QmbaU4oz7rDgfukZWPgGNN772sEW41XLobF9bg7LcAuQEC yes
+vote 270198c6d25e45a1f3ea19b0d6136b93b8cbdb39d7935b8ace341bb4eb499fc3 0 yes
 ```
